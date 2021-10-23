@@ -10,8 +10,8 @@ from math import acos, degrees
 
 ventana = tkinter.Tk()
 ventana.geometry("800x600")
-#cap = cv2.VideoCapture("Multimedia\sentadilla.mp4")
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("Multimedia\sentadilla.mp4")
+#cap = cv2.VideoCapture(0)
 
 def mediapipe():
     mp_drawing = mp.solutions.drawing_utils
@@ -71,6 +71,8 @@ def mediapipe():
                 cv2.imshow("output", output)
 
             cv2.imshow("Frame", frame)
+
+            # Aqui se coloca la condicion para el contador de sentadillas y el numero para que haga su cierre o llamar otra funcion
             if count == 2:
                 break
             if cv2.waitKey(1) & 0xFF == 27:
