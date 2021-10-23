@@ -10,8 +10,8 @@ from math import acos, degrees
 
 ventana = tkinter.Tk()
 ventana.geometry("800x600")
-cap = cv2.VideoCapture("Multimedia\sentadilla.mp4")
-#cap = cv2.VideoCapture(0)
+#cap = cv2.VideoCapture("Multimedia\sentadilla.mp4")
+cap = cv2.VideoCapture(0)
 
 def mediapipe():
     mp_drawing = mp.solutions.drawing_utils
@@ -25,11 +25,14 @@ def mediapipe():
             ret, frame = cap.read()
             if ret == False:
                 break
-            #frame = cv2.flip(frame, 1)
+            frame = cv2.flip(frame, 1)
             height, width, _ = frame.shape
             frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             results = pose.process(frame_rgb)
             if results.pose_landmarks is not None:
+                mp_drawing.draw_landmarks( frame, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                mp_drawing.DrawingSpec(color=(128, 250, 250), thickness=2, circle_radius=3),
+                mp_drawing.DrawingSpec(color=(255,255,255), thickness=2))
                 x1 = int(results.pose_landmarks.landmark[24].x * width)
                 y1 = int(results.pose_landmarks.landmark[24].y * height)
                 x2 = int(results.pose_landmarks.landmark[26].x * width)
@@ -66,7 +69,7 @@ def mediapipe():
                 cv2.circle(output, (x3, y3), 6, (255, 255, 255), 4)
                 cv2.rectangle(output, (0, 0), (60, 60), (255, 255, 255), -1)
                 cv2.putText(output, str(int(angle)), (x2 + 30, y2), 1, 1.5, (128, 250, 250), 2)
-                cv2.putText(output, "contador",str(count), (10, 50), 1, 3.5, (128, 0, 250), 2)
+                cv2.putText(output, str(count), (10, 50), 1, 3.5, (0, 0, 0), 2)
                 cv2.putText(output, "Angulo debe llegar a 80", (50, 50), 1, 1, (0, 0, 0), 2)
                 cv2.imshow("output", output)
 
