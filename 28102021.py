@@ -10,7 +10,7 @@ from math import acos, degrees
 
 ventana = tkinter.Tk()
 ventana.configure(bg= "#9EDED5")
-ventana.geometry("900x700")
+ventana.geometry("1000x500")
 #cap = cv2.VideoCapture("Multimedia\sentadilla.mp4")
 cap = cv2.VideoCapture(0)
 
@@ -97,10 +97,19 @@ btnIniciar.grid(column=0, row=0, padx=5, pady=5)
 btnFinalizar = Button(ventana, text="Finalizar", width=30, command=finalizar_limpiar)
 btnFinalizar.grid(column=1, row=0, padx=5, pady=5)
 
-lbblue = Label(ventana,text="Calificacion",fg="black",relief=GROOVE, bg="white")
+lbblue = Label(ventana,text="CÓMO HACER BIEN LAS SENTADILLAS\n" 
+        "Abre tus piernas hasta el ancho de tus hombros. \n"
+        "Junta tus manos o estira tus brazos en un ángulo de 90 grados.\n"
+        "Cuando vayas a bajar, mantén los glúteos hacia atrás.\n" 
+        "Haz como si fueras a sentarte en una silla imaginaria. \n"
+        "Es importante que las rodillas no sobrepasen la punta de tus pies,\n" 
+        "siempre deben quedar por detrás. Debes intentar mantener \n"
+        "la espalda erguida en todo momento y evitar inclinarte demasiado hacia adelante. \n"
+        "Cuando bajes, inspira, te será más fácil bajar y mantener la espalda recta.",
+        fg="black",relief=GROOVE, bg="white")
 lbblue.grid(column=1, row=1, padx=40, pady=40)
 
-imagen=PhotoImage(file="sentadilla1.png")
+imagen=PhotoImage(file="Multimedia/sentadilla.png")
 fondo=Label(ventana, image=imagen) .grid(column=0, row=1)
 
 ventana.mainloop() 
