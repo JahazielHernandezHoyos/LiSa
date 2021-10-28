@@ -10,7 +10,7 @@ from math import acos, degrees
 
 ventana = tkinter.Tk()
 ventana.configure(bg= "#9EDED5")
-ventana.geometry("1000x500")
+ventana.geometry("1200x500")
 #cap = cv2.VideoCapture("Multimedia\sentadilla.mp4")
 cap = cv2.VideoCapture(0)
 
@@ -109,7 +109,13 @@ lbblue = Label(ventana,text="CÓMO HACER BIEN LAS SENTADILLAS\n"
         fg="black",relief=GROOVE, bg="white")
 lbblue.grid(column=1, row=1, padx=40, pady=40)
 
-imagen=PhotoImage(file="Multimedia/sentadilla.png")
+ventanidaabajo = Label(ventana,text="Despues de 10 sentadillas se cerrara el programa",fg="black",relief=GROOVE, bg="white")
+ventanidaabajo.grid(column=0, row=3, padx=20, pady=20)
+
+
+
+imagen=PhotoImage(file="sentadilla1.png")
 fondo=Label(ventana, image=imagen) .grid(column=0, row=1)
 
 ventana.mainloop() 
+
