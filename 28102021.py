@@ -43,7 +43,7 @@ def mediapipe():
                 p1 = np.array([x1, y1])
                 p2 = np.array([x2, y2])
                 p3 = np.array([x3, y3])
-                l1 = np.linalg.norm(p2 - p3)
+                l1 = np.linalg.norm(p2 - p3) # normalización Frobenius
                 l2 = np.linalg.norm(p1 - p3)
                 l3 = np.linalg.norm(p1 - p2)
                 # Calcular el ángulo
@@ -52,10 +52,16 @@ def mediapipe():
                         ARRIBA = True
                 if ARRIBA == True and ABAJO == False and angle <= 90:
                         ABAJO = True
+                        # ARRIBA = False
+                if ARRIBA == True and ABAJO == True and angle <= 60:
+                        count -= 1
+                        ARRIBA = False
+                        ABAJO = False
                 if ARRIBA == True and ABAJO == True and angle >= 160:
                         count += 1
                         ARRIBA = False
                         ABAJO = False
+
                 #print("count: ", count)
                 # Visualización
                 aux_image = np.zeros(frame.shape, np.uint8)
@@ -114,8 +120,7 @@ ventanidaabajo.grid(column=0, row=3, padx=20, pady=20)
 
 
 
-imagen=PhotoImage(file="sentadilla1.png")
-fondo=Label(ventana, image=imagen) .grid(column=0, row=1)
+#imagen=PhotoImage(file="sentadilla1.png")
+#fondo=Label(ventana, image=imagen) .grid(column=0, row=1)
 
 ventana.mainloop() 
-
